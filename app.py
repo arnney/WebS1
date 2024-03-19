@@ -6,7 +6,6 @@ from bson.errors import InvalidId
 
 app = Flask(__name__)
 
-# MongoDB setup
 app.config["MONGO_URI"] = 'mongodb://mongo:27017/SupplementStore'
 mongo = PyMongo(app)
 
@@ -151,7 +150,6 @@ def add_supplement():
     if existing_supplement:
         return jsonify({'error': 'Supplement already exists for this brand'}), 409
 
-    # Inserting the supplement after adjusting brand_id in data to be an ObjectId
     data['brand_id'] = brand_id
     result = mongo.db.supplements.insert_one(data)
     new_supplement = mongo.db.supplements.find_one({'_id': result.inserted_id})
