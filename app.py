@@ -36,12 +36,12 @@ swagger_config = {
 swagger = Swagger(app, template=swagger_template, config=swagger_config)
 
 
-initialBrands = [
+initial_brands = [
     {"name": "Brand A", "country": "Japan"},
     {"name": "Brand B", "country": "Turkey"},
 ]
 
-initialSupplements = [
+initial_supplements = [
     {"name": "SupplementA", "description": "For Neurological functions", "brand_name": "Brand A", "price": 4.99},
     {"name": "SupplementB", "description": "Boosting muscle recovery", "brand_name": "Brand B", "price": 10.99},
     {"name": "SupplementC", "description": "Mental clarity", "brand_name": "Brand B", "price": 9.99},
@@ -59,10 +59,10 @@ def serialize(doc):
 
 def initialize_database():
     if mongo.db.brands.count_documents({}) == 0:
-        mongo.db.brands.insert_many(initialBrands)
+        mongo.db.brands.insert_many(initial_brands)
 
     if mongo.db.supplements.count_documents({}) == 0:
-        for supplement in initialSupplements:
+        for supplement in initial_supplements:
             brand = mongo.db.brands.find_one({"name": supplement["brand_name"]})
             if brand:
                 supplement_data = {
