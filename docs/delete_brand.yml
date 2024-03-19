@@ -1,0 +1,11 @@
+parameters:
+  - name: brand_id
+    in: path
+    type: string
+    required: true
+    description: The ID of the brand to delete
+responses:
+  200:
+    description: Brand and all associated supplements deleted
+  404:
+    description: Brand not found

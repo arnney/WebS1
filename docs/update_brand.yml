@@ -1,0 +1,21 @@
+parameters:
+  - name: brand_id
+    in: path
+    type: string
+    required: true
+    description: The ID of the brand to update
+  - in: body
+    name: body
+    schema:
+      properties:
+        name:
+          type: string
+          description: The new name of the brand
+        country:
+          type: string
+          description: The new country of the brand
+responses:
+  200:
+    description: The updated brand
+  404:
+    description: Brand not found

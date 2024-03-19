@@ -1,0 +1,18 @@
+parameters:
+  - name: supplement_id
+    in: path
+    type: string
+    required: true
+  - in: body
+    name: body
+    schema:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+responses:
+  200:
+    description: The updated supplement

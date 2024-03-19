@@ -1,0 +1,21 @@
+ responses:
+   200:
+     description: An array of all supplements
+     schema:
+       type: array
+       items:
+         $ref: '#/definitions/Supplement'
+ definitions:
+   Supplement:
+     type: object
+     properties:
+       id:
+         type: string
+       name:
+         type: string
+       description:
+         type: string
+       brand_id:
+         type: string
+       price:
+         type: number

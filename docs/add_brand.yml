@@ -1,0 +1,16 @@
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      required:
+        - name
+        - country
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+responses:
+  201:
+    description: The created brand

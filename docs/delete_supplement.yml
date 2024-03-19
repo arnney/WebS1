@@ -1,0 +1,8 @@
+parameters:
+  - name: supplement_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Supplement deleted

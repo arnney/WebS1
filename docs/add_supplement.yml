@@ -1,0 +1,25 @@
+parameters:
+  - in: body
+    name: body
+    schema:
+      required:
+        - name
+        - description
+        - brand_id
+        - price
+      properties:
+        name:
+          type: string
+          description: The name of the new supplement
+        description:
+          type: string
+          description: The description of the new supplement
+        brand_id:
+          type: string
+          description: The ID of the brand this supplement belongs to
+        price:
+          type: number
+          description: The price of this supplement
+responses:
+  201:
+    description: The created supplement
