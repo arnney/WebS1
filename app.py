@@ -73,7 +73,6 @@ def initialize_database():
                 }
                 mongo.db.supplements.insert_one(supplement_data)
 
-# Brands
 @app.route('/brands', methods=['GET'])
 def get_brands():
     """
