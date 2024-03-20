@@ -92,9 +92,8 @@ def add_brand():
     if existing_brand:
         return jsonify({'error': 'Brand already exists'}), 409
     result = mongo.db.brands.insert_one(data)
-    new_brand = mongo.db.brands.find_one({'_id': result.inserted_id})
-    return jsonify(serialize(new_brand)), 201
-
+    new_brand_id = result.inserted_id
+    return jsonify(serialize(mongo.db.brands.find_one({'_id': new_brand_id}))), 201, {'Location': f'/brands/{new_brand_id}'}
 @app.route('/brands/<brand_id>', methods=['PUT'])
 def update_brand(brand_id):
     """
@@ -115,7 +114,7 @@ def delete_brand(brand_id):
     """
     result = mongo.db.brands.delete_one({'_id': ObjectId(brand_id)})
     if result.deleted_count:
-        return jsonify({'message': 'Brand deleted'}), 200
+        return ('', 204)
     else:
         return jsonify({'error': 'Brand not found'}), 404
 
@@ -150,10 +149,9 @@ def add_supplement():
     if existing_supplement:
         return jsonify({'error': 'Supplement already exists for this brand'}), 409
 
-    data['brand_id'] = brand_id
     result = mongo.db.supplements.insert_one(data)
-    new_supplement = mongo.db.supplements.find_one({'_id': result.inserted_id})
-    return jsonify(serialize(new_supplement)), 201
+    new_supplement_id = result.inserted_id
+    return jsonify(serialize(mongo.db.supplements.find_one({'_id': new_supplement_id}))), 201, {'Location': f'/supplements/{new_supplement_id}'}
 
 @app.route('/supplements/<supplement_id>', methods=['PUT'])
 def update_supplement(supplement_id):
@@ -175,7 +173,7 @@ def delete_supplement(supplement_id):
     """
     result = mongo.db.supplements.delete_one({'_id': ObjectId(supplement_id)})
     if result.deleted_count:
-        return jsonify({'message': 'Supplement deleted'}), 200
+        return ('', 204)
     else:
         return jsonify({'error': 'Supplement not found'}), 404
 
