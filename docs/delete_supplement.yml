@@ -4,5 +4,5 @@ parameters:
     type: string
     required: true
 responses:
-  200:
-    description: Supplement deleted
+  204:
+    description:
