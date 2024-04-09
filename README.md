@@ -12,5 +12,25 @@ docker-compose up --build
 ```
 
 
+Brand object:
+```
+  {
+    "country": "string",
+    "id": "string",
+    "name": "string"
+  }
+```
+
+Supplement object:
+```
+  {
+    "brand_id": "string",
+    "description": "string",
+    "id": "string",
+    "name": "string",
+    "price": 0
+  }
+```
+
 
 
